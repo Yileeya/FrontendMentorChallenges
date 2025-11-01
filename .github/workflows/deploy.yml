@@ -1,0 +1,31 @@
+name: Build & Deploy All Practices
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ 取得程式碼
+      - uses: actions/checkout@v3
+
+      # 2️⃣ 安裝 Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # 3️⃣ 運行統一 build 腳本
+      - name: Build all SCSS
+        run: bash build-all.sh
+
+      # 4️⃣ 部署到 gh-pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # 整個 repo 部署
