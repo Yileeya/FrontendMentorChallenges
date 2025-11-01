@@ -1,5 +1,7 @@
 # QR Code Component
 
+Live Demo: [View Online](https://yileeya.github.io/FrontendMentorChallenges/QRCodeComponent/)
+
 This is my solution to
 the [QR Code component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/qr-code-component-iux_sIO_H).
 
