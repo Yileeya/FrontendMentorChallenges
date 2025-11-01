@@ -1,0 +1,12 @@
+{
+  "name": "qr-code-component",
+  "version": "1.0.0",
+  "description": "QR code component",
+  "scripts": {
+    "build-css": "sass style/main.scss style/main.css",
+    "watch-css": "sass --watch style/main.scss:style/main.css"
+  },
+  "dependencies": {
+    "sass": "1.93.3"
+  }
+}

@@ -1,0 +1,97 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: $slate-300;
+  padding: 15px 10px;
+  min-height: 100vh;
+  @include flex-container(center);
+}
+
+.card {
+  background: $white;
+  width: 320px;
+  height: 499px;
+  border-radius: 20px;
+  box-shadow: 0 25px 25px 0 #0000000C;
+  padding: $spacing-200 $spacing-200 $spacing-500;
+  @include transition-all;
+
+  .img-container {
+    background: $blue-600;
+    height: 288px;
+    width: 288px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    @include flex-container(center);
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      background: $blue-500;
+      border-radius: 100%;
+      @include transition-all;
+    }
+
+    &:before {
+      height: 328px;
+      width: 328px;
+      bottom: 124.5px;
+      right: 91.5px;
+    }
+
+    &:after {
+      height: 270px;
+      width: 270px;
+      top: 204.5px;
+      left: 131.5px;
+    }
+
+    .qrcode {
+      z-index: 10;
+      @include transition-all;
+    }
+  }
+
+  .content {
+    text-align: center;
+
+    h1 {
+      @include text-preset-1;
+      color: $slate-900;
+      margin: $spacing-300 0 $spacing-200;
+    }
+
+    p {
+      @include text-preset-2;
+      color: $slate-500;
+    }
+  }
+
+  &:hover {
+    transform: translate(-5px, -12px);
+    box-shadow: 15px 25px 25px #0000001A;
+
+    .img-container {
+      &:before {
+        transform: scale(0.7);
+      }
+
+      &:after {
+        transform: scale(0.8);
+      }
+
+      .qrcode {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
