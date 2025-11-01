@@ -1,17 +1,18 @@
 #!/bin/bash
+set -ex
 
-# 編譯每個 practice 資料夾的 SCSS
-for dir in FrontendMentorChallenges*/; do
-  echo "Building CSS in $dir"
-  cd "$dir"
+# 遍歷根目錄下所有子資料夾
+for dir in */; do
+  # 只處理有 package.json 的資料夾
+  if [ -f "$dir/package.json" ]; then
+    echo "Building CSS in $dir"
+    cd "$dir"
 
-  # 安裝依賴
-  npm install
+    npm install
+    npm run build-css
 
-  # 編譯 SCSS -> CSS
-  npm run build-css
-
-  cd ..
+    cd ..
+  fi
 done
 
 echo "All SCSS compiled!"
